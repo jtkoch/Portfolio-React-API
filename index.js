@@ -22,6 +22,7 @@ index.listen(PORT, () => {
 });
 
 index.get('/api', (req, res) => {
+    const messageOfTheDay = process.env.MOTD || 'Hello World!'
     res.send('API Status: Welcome to Jensen Koch\'s Portfolio API')
 });
 
