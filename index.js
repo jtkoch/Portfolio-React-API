@@ -4,8 +4,6 @@ const nodemailer = require('nodemailer');
 const cors = require('cors');
 require('dotenv').config()
 
-const port = 3030;
-
 const index = express();
 index.use(bodyParser.json());
 index.use(bodyParser.urlencoded({ extended: true }));
@@ -18,8 +16,9 @@ index.use((req, res, next) => {
     next();
 });
 
-index.listen(port, () => {
-    console.log('We are live on port 3030')
+const PORT = process.env.PORT || 3030
+index.listen(PORT, () => {
+    console.log(`\n=== Server listening on port ${PORT} ===\n`)
 });
 
 index.get('/api', (req, res) => {
