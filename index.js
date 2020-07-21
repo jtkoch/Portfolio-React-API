@@ -22,7 +22,7 @@ index.listen(port, () => {
     console.log(`\n=== Server listening on port ${port} ===\n`)
 });
 
-index.get('/api', async (req, res) => {
+index.get('/', async (req, res) => {
     try {
         const messageOfTheDay = process.env.MOTD || 'Hello World!'
         res.status(200).json({ motd: messageOfTheDay })
@@ -33,7 +33,7 @@ index.get('/api', async (req, res) => {
         })
     }})  
 
-index.post('/api/v1', (req,res) => {
+index.post('/v1', (req,res) => {
     const data = req.body;
   
   const smtpTransport = nodemailer.createTransport({
