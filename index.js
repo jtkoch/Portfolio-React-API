@@ -16,15 +16,22 @@ index.use((req, res, next) => {
     next();
 });
 
-const PORT = process.env.PORT || 3030
-index.listen(PORT, () => {
-    console.log(`\n=== Server listening on port ${PORT} ===\n`)
+const port = process.env.PORT || 3030
+
+index.listen(port, () => {
+    console.log(`\n=== Server listening on port ${port} ===\n`)
 });
 
-index.get('/api', (req, res) => {
-    const messageOfTheDay = process.env.MOTD || 'Hello World!'
-    res.send('API Status: Welcome to Jensen Koch\'s Portfolio API')
-});
+index.get('/api', async (req, res) => {
+    try {
+        const messageOfTheDay = process.env.MOTD || 'Hello World!'
+        res.status(200).json({ motd: messageOfTheDay })
+    }   catch(error) {
+        console.error('\nERROR', error)
+        res.status(500).json({
+            error: 'Cannot retrieve the message'
+        })
+    }})  
 
 index.post('/api/v1', (req,res) => {
     const data = req.body;
