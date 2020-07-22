@@ -35,7 +35,6 @@ index.get('/', async (req, res) => {
 
 index.post('/v1', (req,res) => {
     const data = req.body;
-  
   const smtpTransport = nodemailer.createTransport({
     service: 'Gmail',
     port: 465,
