@@ -57,8 +57,10 @@ index.post('/v1', (req,res) => {
   (error, response) => {
     if(error) {
       res.send(error)
+      console.log("error : " + JSON.stringify(error))
     }else {
       res.send('Success')
+      console.log("response : " + JSON.stringify(response))
     }
     smtpTransport.close();
   });
