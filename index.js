@@ -48,9 +48,9 @@ index.post('/v1', (req,res) => {
     from: data.email,
     to: process.env.USER_NAME,
     subject: 'Portfolio Contact Form',
-    html: `<p>${data.name}</p>
-            <p>${data.email}</p>
-            <p>${data.message}</p>`
+    html:  `<p>Name: ${data.name}</p>
+            <p>Email: ${data.email}</p>
+            <p>Message: ${data.message}</p>`
   };
   
   smtpTransport.sendMail(mailOptions,
